@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/linear"
+    android:clickable="true"
+    >
+    <com.example.leet.myminlist.MyEditText
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:hint="添加新事项"
+        android:background="#fff"
+        android:paddingLeft="20dp"
+        android:singleLine="true"
+        android:paddingRight="30dp"
+    />
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@drawable/edit"/>-->
+<lib.homhomlib.design.SlidingLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:sliding_mode="both"
+    app:background_view="@layout/back"
+
+   >
+
+    <android.support.v7.widget.RecyclerView
+
+        android:id="@+id/recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:background="#fff">
+
+    </android.support.v7.widget.RecyclerView>
+</lib.homhomlib.design.SlidingLayout>
+</LinearLayout>
