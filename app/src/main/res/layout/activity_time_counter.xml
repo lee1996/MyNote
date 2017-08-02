@@ -32,12 +32,84 @@
             android:text="nihao"
             android:textSize="15sp" />
     </LinearLayout>
+    <cn.iwgang.countdownview.CountdownView
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:isHideTimeBackground="true"
+        app:isShowDay="false"
+        app:isShowHour="false"
+        app:isShowMinute="true"
+        app:isShowSecond="true"
+        app:isShowMillisecond="false"
+        app:timeTextColor="#000000"
+        app:timeTextSize="45sp"
+        app:timeBgBorderRadius="25dp"
+        app:isTimeTextBold="true"
+        app:suffixGravity="bottom"
+        app:suffixTextColor="#000000"
+        app:suffixTextSize="24sp"
+        app:suffixHour="时"
+        app:suffixMinute="分"
+        app:suffixSecond="秒"
+        app:suffixMillisecond="毫秒"
+        />
     <LinearLayout
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/ten"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="this is"/>
+            android:layout_weight="1"
+            android:text="10min"
+            android:textSize="15sp"
+            style="@style/Widget.AppCompat.Button.Small"
+          />
+        <Button
+            android:id="@+id/twenty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="20min"
+            android:textSize="15sp"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            />
+        <Button
+            android:id="@+id/thirty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="30min"
+            android:textSize="15sp"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+           />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="开　始"
+            android:textSize="25sp"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            />
+        <!--<Button-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:id="@+id/pause"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="65dp"-->
+            <!--android:text="暂　停"-->
+            <!--android:textSize="25sp"-->
+            <!--style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"/>-->
     </LinearLayout>
 </LinearLayout>
