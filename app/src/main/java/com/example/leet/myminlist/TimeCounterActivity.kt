@@ -1,11 +1,19 @@
 package com.example.leet.myminlist
 
+import android.accessibilityservice.GestureDescription
+import android.app.Service
+import android.content.DialogInterface
 import android.content.Intent
+import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Vibrator
+import android.support.v7.app.AlertDialog
 import android.util.Size
+import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.VelocityTracker
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_time_counter.*
 
@@ -26,12 +34,6 @@ class TimeCounterActivity : AppCompatActivity() {
         var get=intent
         var note=get.getStringExtra("note")
         show.text=note
-        back.setOnClickListener {
-            finish()
-            var intent= Intent(this,MainActivity::class.java)
-            startActivity(intent)
-
-        }
 //        count.start(64300)
 //        var time:Long=0
 //        while(time<1000){
@@ -61,6 +63,10 @@ class TimeCounterActivity : AppCompatActivity() {
         }
         i=0
         start.setOnClickListener {
+            ten.visibility=View.GONE
+            twenty.visibility=View.GONE
+            thirty.visibility=View.GONE
+            focus.visibility=View.VISIBLE
             if (start.text.toString().equals("开　始")) {
                 count.start(time)
                 while (i < 1000) {
@@ -76,16 +82,31 @@ class TimeCounterActivity : AppCompatActivity() {
                 count.start(count.remainTime)
             }
         }
-//        pause.setOnClickListener {
-//            if(pause.text.toString().equals("暂　停")) {
-//                count.pause()
-//                pause.text="继　续"
-//            }else{
-//                pause.text="暂　停"
-//                count.start(count.remainTime)
-//            }
-//        }
+        count.setOnCountdownEndListener {
+            var viber:Vibrator= getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
+            viber.vibrate(3000)
+            toast("恭喜你已经成功专注了这么久！")
+        }
+        back.setOnClickListener {
+            finish()
+            var intent= Intent(this,MainActivity::class.java)
+            overridePendingTransition(R.anim.abc_slide_in_bottom,R.anim.abc_slide_out_top)
+            startActivity(intent)
+        }
 
+    }
+    //弹出对话框
+    fun dialog(){
+        var builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle("确认退出吗？")
+        builder.setTitle("提示")
+        builder.setPositiveButton("确认", DialogInterface.OnClickListener { dialogInterface, i ->
+            dialogInterface.dismiss()
+        })
+        builder.setNegativeButton("取消", DialogInterface.OnClickListener { dialogInterface, i ->
+            dialogInterface.dismiss()
+        })
+        builder.create().show()
     }
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         createVelocityTracker(ev)
@@ -103,7 +124,20 @@ class TimeCounterActivity : AppCompatActivity() {
                     var intent= Intent(this,MainActivity::class.java)
                     overridePendingTransition(R.anim.abc_slide_in_bottom,R.anim.abc_slide_out_top)
                     startActivity(intent)
-
+//                    var builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
+//                    builder.setTitle("确认退出吗？")
+//                    builder.setTitle("提示")
+//                    builder.setPositiveButton("确认", DialogInterface.OnClickListener { dialogInterface, i ->
+//                        dialogInterface.dismiss()
+//                        finish()
+//                        var intent= Intent(this,MainActivity::class.java)
+//                        overridePendingTransition(R.anim.abc_slide_in_bottom,R.anim.abc_slide_out_top)
+//                        startActivity(intent)
+//                    })
+//                    builder.setNegativeButton("取消", DialogInterface.OnClickListener { dialogInterface, i ->
+//                        dialogInterface.dismiss()
+//                    })
+//                    builder.create().show()
                 }
             }
             MotionEvent.ACTION_UP->{
@@ -134,5 +168,12 @@ class TimeCounterActivity : AppCompatActivity() {
 
     fun toast(str:String){
         Toast.makeText(this,str,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onBackPressed() {
+        finish()
+        var intent= Intent(this,MainActivity::class.java)
+        overridePendingTransition(R.anim.abc_slide_in_bottom,R.anim.abc_slide_out_top)
+        startActivity(intent)
     }
 }

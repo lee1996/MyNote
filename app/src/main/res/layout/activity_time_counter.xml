@@ -30,7 +30,11 @@
             android:layout_gravity="center_horizontal"
             android:paddingTop="20dp"
             android:text="nihao"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:focusable="true"/>
     </LinearLayout>
     <cn.iwgang.countdownview.CountdownView
         android:layout_marginTop="60dp"
@@ -88,6 +92,16 @@
             android:textSize="15sp"
             style="@style/Base.Widget.AppCompat.Button.Colored"
            />
+        <com.example.leet.myminlist.MyTextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/focus"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保持专注是成功的基本品质"
+            android:visibility="gone"
+            android:textSize="25sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="40dp"
