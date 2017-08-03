@@ -86,6 +86,10 @@ class TimeCounterActivity : AppCompatActivity() {
             var viber:Vibrator= getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
             viber.vibrate(3000)
             toast("恭喜你已经成功专注了这么久！")
+            focus.visibility=View.GONE
+            ten.visibility=View.VISIBLE
+            twenty.visibility=View.VISIBLE
+            thirty.visibility=View.VISIBLE
         }
         back.setOnClickListener {
             finish()
